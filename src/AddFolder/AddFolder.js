@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import './AddFolder.css'
+import config from '../config'
 import NoteContext from '../NoteContext'
 
 class AddFolder extends Component {
@@ -43,7 +44,7 @@ class AddFolder extends Component {
             })
         }
         console.log(options)
-        fetch('http://localhost:9090/folders', options)
+        fetch(`${config.API_ENDPOINT}/folders`, options)
         .then(response => {
             if(!response.ok) {
                 throw new Error('Something went wrong.')
@@ -68,14 +69,14 @@ class AddFolder extends Component {
     render() {
         return (
             <section className='AddFolder'>
-                <h2>Create a folder</h2>
+                <h2 className="add-folder-title">Create a folder</h2>
                 <NotefulForm
                     onSubmit={event => {
                         this.isNameValid(event)
                     }}
                 >
                     <div className='field'>
-                        <label htmlFor='folder-name-input'>Name</label>
+                        <label className="name" htmlFor='folder-name-input'>Name</label>
                         <input 
                             type='text'
                             id='folder-name-input'

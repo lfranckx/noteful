@@ -5,6 +5,8 @@ import NoteListNav from '../NoteListNav/NoteListNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
+// import dummystore from '../dummy-store'
+import config from '../config';
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
 import NoteContext from '../NoteContext'
@@ -19,78 +21,33 @@ class App extends Component {
     };
 
     componentDidMount() {
-        fetch(this.FolderUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error ('Something went wrong, please try again later.')
-            }
-            return response
-        })
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                folders: data,
-                error: null
-            })
-        })
-        .catch(error => {
-            this.setState({
-                error: error.message
-            })
-            console.log(error)
-        })
+        Promise.all([
+            fetch(`${config.API_ENDPOINT}/notes`),
+            fetch(`${config.API_ENDPOINT}/folders`)
+        ])
+            .then(([notesRes, foldersRes]) => {
+                if (!notesRes.ok)
+                    return notesRes.json().then(e => Promise.reject(e));
+                if (!foldersRes.ok)
+                    return foldersRes.json().then(e => Promise.reject(e));
 
-        fetch(this.NoteUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Something went wrong, please try again later.')
-            }
-            return response
-        })
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                notes: data,
-                error: null
+                return Promise.all([notesRes.json(), foldersRes.json()]);
             })
-        })
-        .catch(error => {
-            this.setState({
-                error: error.message
+            .then(([notes, folders]) => {
+                this.setState({notes, folders});
             })
-        })
+            .catch(error => {
+                console.error({error});
+            });
     }
 
-    handleDeleteNote = id => {
-        const newNotes = this.state.notes.filter(note => note.id !== id)
-        console.log(newNotes)
-        const options = {
-            method: 'DELETE'
-        }
-        fetch(`${this.NoteUrl}/${id}`, options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Something went wrong.')
-            }
-            return response
-        })
-        .then(response => response.json())
-        .then(data => {
-            this.setState({
-                notes: newNotes,
-                error: null
-            },
-            () => this.props.history.replace('/'))
-        })
-        .catch(error => {
-            this.setState({
-                error: error.message
-            })
-        })
-    }
+    handleDeleteNote = noteId => {
+        this.setState({
+            notes: this.state.notes.filter(note => note.id !== noteId)
+        });
+    };
 
     handleAddFolder = folder => {
-        console.log(this.props)
         this.setState({
             folders: [...this.state.folders, folder]
         },

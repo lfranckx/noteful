@@ -1,0 +1,17 @@
+.AddFolder {
+    background-color: #102541;
+    padding-left: 30px;
+}
+
+.add-folder-title {
+    color: #bdbdbd;
+}
+
+.Noteful-form {
+    background-color: #102541;
+}
+
+.Noteful-form label {
+    font-size: 18px;
+    color: #bdbdbd;
+}
