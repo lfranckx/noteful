@@ -81,7 +81,7 @@ export default class AddNote extends Component {
     render() {
         return(
             <section className="AddNote">
-                <h2>Create a note</h2>
+                <h2 className="add-note-title">Create a note</h2>
                 <NotefulForm 
                     onSubmit={event => {
                         this.isNameValid(event)

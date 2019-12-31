@@ -1,0 +1,12 @@
+.AddNote {
+    background-color: #102541;
+    padding-left: 30px;
+}
+
+.add-note-title {
+    color: #bdbdbd;
+}
+
+#note-content-input {
+    height: 300px;
+}
