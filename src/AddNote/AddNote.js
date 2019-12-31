@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import NotefulForm from '../NotefulForm/NotefulForm'
 import NoteContext from '../NoteContext'
+import config from '../config'
 import './AddNote.css'
 
 export default class AddNote extends Component {
@@ -49,7 +50,7 @@ export default class AddNote extends Component {
             })
         }
         
-        fetch('http://localhost:9090/notes', options)
+        fetch(`${config.API_ENDPOINT}/notes`, options)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Something went wrong.')
