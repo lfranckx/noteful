@@ -100,7 +100,7 @@ export default class AddNote extends Component {
                     </div>
                     {!this.state.nameValid && (
                         <div>
-                            <p>{this.state.validationMessage}</p>
+                            <p className="error-message">{this.state.validationMessage}</p>
                         </div>
                     )}
                     <div className='field'>
@@ -131,7 +131,7 @@ export default class AddNote extends Component {
                         </select>
                         {!this.state.nameValid && (
                             <div>
-                                <p>{this.state.validationMessage}</p>
+                                <p className="error-message">{this.state.validationMessage}</p>
                             </div>
                         )}
                     </div>
@@ -141,7 +141,7 @@ export default class AddNote extends Component {
                 </NotefulForm>
                 {this.state.error && (
                     <div>
-                        <p>{this.state.error}</p>
+                        <p className="error-message">{this.state.error}</p>
                     </div>
                 )}
             </section>

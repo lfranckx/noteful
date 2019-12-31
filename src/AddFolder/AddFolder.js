@@ -85,7 +85,7 @@ class AddFolder extends Component {
                         />
                         {!this.state.nameValid && (
                             <div>
-                                <p>{this.state.validationMessage}</p>
+                                <p className="error-message">{this.state.validationMessage}</p>
                             </div>
                         )}
                     </div>
@@ -95,7 +95,7 @@ class AddFolder extends Component {
                 </NotefulForm>
                 {this.state.error && (
                     <div>
-                        <p>{this.state.error}</p>
+                        <p className="error-message">{this.state.error}</p>
                     </div>
                 )}
             </section>
