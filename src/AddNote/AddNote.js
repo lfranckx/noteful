@@ -28,7 +28,7 @@ export default class AddNote extends Component {
             this.setState({
                 validationMessage: "Note name cannot be blank."
             })
-        } else if (!this.state.id) {
+        } else if (this.state.id) {
             this.setState({
                 validationMessage: '',
                 nameValid: true
