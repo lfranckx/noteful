@@ -38,8 +38,8 @@ class Note extends Component {
 export default withRouter(Note);
 
 Note.propTypes = {
-  modified: PropTypes.string,
-  id: PropTypes.string,
-  name: PropTypes.string,
+  modified: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   handleDelete: PropTypes.func
 };
