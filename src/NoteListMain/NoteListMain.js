@@ -48,5 +48,5 @@ NoteListMain.defaultProps = {
 }
 
 NoteListMain.propTypes = {
-  folderId: PropTypes.string.isRequired
+  folderId: PropTypes.string
 }
