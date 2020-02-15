@@ -45,9 +45,8 @@ export default class AddNote extends Component {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 title: this.state.title,
-                modified: new Date(),
-                folder_id: this.state.folder_id,
-                content: this.state.content
+                content: this.state.content,
+                date_published: new Date()
             })
         }
         
@@ -68,7 +67,7 @@ export default class AddNote extends Component {
     }
 
     nameChange = letter => {
-        this.setState({ name: letter })
+        this.setState({ title: letter })
     }
 
     contentChange = letter => {
@@ -125,8 +124,8 @@ export default class AddNote extends Component {
                         >
                             <option value={null}>...</option>
                             {this.context.folders.map(folder => (
-                                <option key={folder.name} name='folder' value={folder.id}>
-                                    {folder.name}
+                                <option key={folder.folder_name} name='folder' value={folder.id}>
+                                    {folder.folder_name}
                                 </option>
                             ))}
                         </select>

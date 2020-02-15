@@ -19,9 +19,9 @@ export default class NoteListMain extends Component {
             <li key={note.id}>
               <Note
                 handleDelete={this.context.handleDelete}
-                id={note.id}
-                name={note.name}
-                modified={note.modified}
+                id={`${note.id}`}
+                name={note.title}
+                modified={note.date_published}
               />
             </li>
           )}

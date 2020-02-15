@@ -10,6 +10,8 @@ export default class NotePageMain extends Component {
   render() {
     const {noteId} = this.props.match.params
     const note = findNote(this.context.notes, noteId)
+    console.log(noteId)
+    console.log(this.context.notes)
     return (
       <section className='NotePageMain'>
         <Note
