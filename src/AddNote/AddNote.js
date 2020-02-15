@@ -9,9 +9,10 @@ export default class AddNote extends Component {
         super()
         this.state = {
             error: null,
-            name: '',
-            content: '',
             id: '',
+            title: '',
+            content: '',
+            folder_id: '',
             nameValid: false,
             idValid: false,
             validationMessage: ''
@@ -24,7 +25,7 @@ export default class AddNote extends Component {
 
     isNameValid =  event => {
         event.preventDefault()
-        if (!this.state.name) {
+        if (!this.state.title) {
             this.setState({
                 validationMessage: "Note name cannot be blank."
             })
@@ -43,14 +44,14 @@ export default class AddNote extends Component {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                name: this.state.name,
+                title: this.state.title,
                 modified: new Date(),
-                folderId: this.state.id,
+                folder_id: this.state.folder_id,
                 content: this.state.content
             })
         }
         
-        fetch(`${config.API_ENDPOINT}/notes`, options)
+        fetch(`${config.API_ENDPOINT}/api/notes`, options)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Something went wrong.')

@@ -9,7 +9,8 @@ class AddFolder extends Component {
         super()
         this.state = {
             error: null,
-            name: '',
+            id: '',
+            folder_name: '',
             nameValid: false,
             validationMessage: ''
         }
@@ -19,7 +20,7 @@ class AddFolder extends Component {
 
     isNameValid = event => {
         event.preventDefault()
-        if(!this.state.name) {
+        if(!this.state.folder_name) {
             this.setState({
                 validationMessage: 'Folder name cannot be blank.',
                 nameValid: false
@@ -40,11 +41,11 @@ class AddFolder extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: this.state.name
+                folder_name: this.state.folder_name
             })
         }
         console.log(options)
-        fetch(`${config.API_ENDPOINT}/folders`, options)
+        fetch(`${config.API_ENDPOINT}/api/folders`, options)
         .then(response => {
             if(!response.ok) {
                 throw new Error('Something went wrong.')
@@ -63,7 +64,7 @@ class AddFolder extends Component {
     }
 
     nameChange = letter => {
-        this.setState({ name: letter })
+        this.setState({ folder_name: letter })
     }
 
     render() {
