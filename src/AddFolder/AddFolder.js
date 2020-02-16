@@ -44,7 +44,6 @@ class AddFolder extends Component {
                 folder_name: this.state.folder_name
             })
         }
-        console.log(options)
         fetch(`${config.API_ENDPOINT}/api/folders`, options)
         .then(response => {
             if(!response.ok) {

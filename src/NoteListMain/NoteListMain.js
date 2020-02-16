@@ -15,7 +15,6 @@ export default class NoteListMain extends Component {
     if (this.context.notes.length === 0) {
       return <div>No Notes</div>
     }
-    
     return (
       <section className='NoteListMain'>
         <ul>
@@ -26,7 +25,6 @@ export default class NoteListMain extends Component {
                 id={`${note.id}`}
                 name={note.title}
                 modified={note.date_published}
-                folder_id={note.folder_id}
               />
             </li>
           )}
