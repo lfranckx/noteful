@@ -61,6 +61,13 @@ class App extends Component {
 
     renderNavRoutes() {
         const {notes, folders} = this.state;
+        if (notes.length === 0) {
+            return <div>No notes</div>
+        }
+        // const {noteId} = routeProps.match.params;
+        // const note = findNote(notes, noteId) || {};
+        // console.log(note);
+        
         return (
             <>
                 {['/', '/folder/:folderId'].map(path => (
@@ -76,7 +83,7 @@ class App extends Component {
                     render={routeProps => {
                         const {noteId} = routeProps.match.params;
                         const note = findNote(notes, noteId) || {};
-                        const folder = findFolder(folders, note.folderId);
+                        const folder = findFolder(folders, note.folder_id);
                         return <NotePageNav {...routeProps} folder={folder} />;
                     }}
                 />

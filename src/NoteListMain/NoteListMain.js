@@ -12,10 +12,15 @@ export default class NoteListMain extends Component {
   static contextType = NoteContext
   render() {
     const {folderId} = this.props.match.params
-
+    console.log(this.props);
+    
+    if (this.context.notes.length === 0) {
+      return <div>No Notes</div>
+    }
     return (
       <section className='NoteListMain'>
         <ul>
+          {console.log(this.context.notes, folderId)}
           {getNotesForFolder(this.context.notes, folderId).map(note =>
             <li key={note.id}>
               <Note
@@ -23,6 +28,7 @@ export default class NoteListMain extends Component {
                 id={`${note.id}`}
                 name={note.title}
                 modified={note.date_published}
+                folder_id={note.folder_id}
               />
             </li>
           )}
