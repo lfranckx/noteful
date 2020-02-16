@@ -6,8 +6,6 @@ import PropTypes from 'prop-types'
 import NotePageMain from '../NotePageMain/NotePageMain'
 
 export default function NotePageNav(props) {
-  console.log(props);
-  
   return (
     <div className='NotePageNav'>
       <CircleButton
