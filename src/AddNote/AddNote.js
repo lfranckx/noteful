@@ -29,7 +29,7 @@ export default class AddNote extends Component {
             this.setState({
                 validationMessage: "Note name cannot be blank."
             })
-        } else if (this.state.id) {
+        } else if (this.state.folder_id) {
             this.setState({
                 validationMessage: '',
                 nameValid: true
@@ -40,13 +40,15 @@ export default class AddNote extends Component {
     }
 
     handleAddNote = () => {
+        console.log(this.context.folders, this.context.notes)
         const options = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 title: this.state.title,
                 content: this.state.content,
-                folder_id: this.state.folder_id
+                folder_id: parseInt(this.state.folder_id),
+                date_published: new Date()
             })
         }
         console.log(options.body);

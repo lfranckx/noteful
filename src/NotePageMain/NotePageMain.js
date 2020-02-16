@@ -10,7 +10,6 @@ export default class NotePageMain extends Component {
   render() {
     const {noteId} = this.props.match.params
     const note = findNote(this.context.notes, noteId)
-    console.log(note)
     if (this.context.notes.length === 0) {
       return <div>No notes</div>
     }
