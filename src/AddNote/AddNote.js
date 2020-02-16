@@ -40,7 +40,6 @@ export default class AddNote extends Component {
     }
 
     handleAddNote = () => {
-        console.log(this.context.folders, this.context.notes)
         const options = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -51,7 +50,6 @@ export default class AddNote extends Component {
                 date_published: new Date()
             })
         }
-        console.log(options.body);
         
         fetch(`${config.API_ENDPOINT}/api/notes`, options)
             .then(response => {
