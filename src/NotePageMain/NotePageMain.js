@@ -10,14 +10,13 @@ export default class NotePageMain extends Component {
   render() {
     const {noteId} = this.props.match.params
     const note = findNote(this.context.notes, noteId)
-    console.log(noteId)
-    console.log(this.context.notes)
+    
     return (
       <section className='NotePageMain'>
         <Note
           id={note.id}
-          name={note.name}
-          modified={note.modified}
+          name={note.title}
+          modified={note.date_modified}
           handleDelete={this.context.handleDelete}
         />
         <div className='NotePageMain__content'>

@@ -12,6 +12,8 @@ export default class NoteListMain extends Component {
   static contextType = NoteContext
   render() {
     const {folderId} = this.props.match.params
+    console.log(this.context.notes)
+
     return (
       <section className='NoteListMain'>
         <ul>
