@@ -64,9 +64,6 @@ class App extends Component {
         if (notes.length === 0) {
             return <div>No notes</div>
         }
-        // const {noteId} = routeProps.match.params;
-        // const note = findNote(notes, noteId) || {};
-        // console.log(note);
         
         return (
             <>

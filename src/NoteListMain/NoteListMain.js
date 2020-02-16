@@ -15,13 +15,11 @@ export default class NoteListMain extends Component {
     if (this.context.notes.length === 0) {
       return <div>No Notes</div>
     }
-    console.log(this.context.notes, folderId);
-    console.log(getNotesForFolder(this.context.notes, folderId));
     
     return (
       <section className='NoteListMain'>
         <ul>
-          {getNotesForFolder(this.context.notes, folderId).map(note =>
+          {getNotesForFolder(this.context.notes, parseInt(folderId)).map(note =>
             <li key={note.id}>
               <Note
                 handleDelete={this.context.handleDelete}
