@@ -25,8 +25,6 @@ class App extends Component {
             fetch(`${config.API_ENDPOINT}/api/folders`)
         ])
             .then(([notesRes, foldersRes]) => {
-                console.log(notesRes);
-                console.log(foldersRes);
                 if (!notesRes.ok)
                     return notesRes.json().then(e => Promise.reject(e));
                 if (!foldersRes.ok)
@@ -36,7 +34,6 @@ class App extends Component {
             })
             .then(([notes, folders]) => {
                 this.setState({notes, folders});
-                console.log(this.state);
             })
             .catch(error => {
                 console.error({error});

@@ -46,9 +46,10 @@ export default class AddNote extends Component {
             body: JSON.stringify({
                 title: this.state.title,
                 content: this.state.content,
-                date_published: new Date()
+                folder_id: this.state.folder_id
             })
         }
+        console.log(options.body);
         
         fetch(`${config.API_ENDPOINT}/api/notes`, options)
             .then(response => {
@@ -75,7 +76,7 @@ export default class AddNote extends Component {
     }
 
     idChange = letter => {
-        this.setState({ id: letter })
+        this.setState({ folder_id: letter })
     }
 
     render() {
@@ -124,7 +125,7 @@ export default class AddNote extends Component {
                         >
                             <option value={null}>...</option>
                             {this.context.folders.map(folder => (
-                                <option key={folder.folder_name} name='folder' value={folder.id}>
+                                <option key={folder.id} name='folder' value={folder.id}>
                                     {folder.folder_name}
                                 </option>
                             ))}

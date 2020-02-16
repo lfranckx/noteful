@@ -10,6 +10,7 @@ export default class NotePageMain extends Component {
   render() {
     const {noteId} = this.props.match.params
     const note = findNote(this.context.notes, noteId)
+    console.log(note)
     if (this.context.notes.length === 0) {
       return <div>No notes</div>
     }
@@ -18,7 +19,7 @@ export default class NotePageMain extends Component {
         <Note
           id={note.id}
           name={note.title}
-          modified={note.date_modified}
+          modified={note.date_published}
           handleDelete={this.context.handleDelete}
         />
         <div className='NotePageMain__content'>
